@@ -1,5 +1,7 @@
 # Allsafe Solutions Website
 
+Google Drive Folder Link: https://drive.google.com/drive/folders/1WgOTeqBdv4CZARIFD2e209Bkql92YTW2?usp=drive_link
+
 ## Project Overview
 Allsafe Solutions is a comprehensive website dedicated to providing cybersecurity services. The website is designed to offer information about various services, pricing, resources, and more, with a focus on user experience and responsive design.
 

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .section {
+            padding: 80px 0;
+            width: 100%;
+        }
+
+        .section-light {
+            background-color: #ffffff;
+        }
+
+        [data-theme='dark'] .section-light {
+            background-color: #000000;
+        }
+
+        .section-dark {
+            background-color: #f8f9fa;
+        }
+
+        [data-theme='dark'] .section-dark {
+            background-color: #111111;
+        }
+
+        .section-content {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .back-button i {
+            font-size: 0.8rem;
+        }
+
+        .back-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            transition: all 0.3s ease;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .services-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .services-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        [data-theme='dark'] .services-header p {
+            color: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme='dark'] .service-card {
+            background: rgba(34, 34, 34, 0.95);
+            border-color: var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        [data-theme='dark'] .service-card h3,
+        [data-theme='dark'] .service-card p {
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px;
+            }
+            
+            .service-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <script>
+        // Check for theme preference in local storage
+        const userTheme = localStorage.getItem('theme');
+        if (userTheme) {
+            document.body.setAttribute('data-theme', userTheme);
+        } else {
+            // Set default theme to dark
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    </script>
+
+    <a href="index.html" class="back-button">Back</a>
+
+    <div class="section section-light">
+        <div class="section-content">
+            <div class="services-header">
+                <h1>Our Comprehensive Services</h1>
+                <p>Discover our full range of cybersecurity solutions designed to protect your business from evolving digital threats.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-dark">
+        <div class="section-content">
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Network Security</h3>
+                    <p>Advanced 24/7 firewall protection, intrusion detection, and real-time network monitoring to defend against sophisticated cyber threats.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Data Encryption</h3>
+                    <p>Military-grade encryption protocols to protect your sensitive data at rest and in transit, ensuring complete confidentiality and integrity.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Identity Protection</h3>
+                    <p>Cutting-edge multi-factor authentication, biometric verification, and privileged access management to prevent unauthorized access.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-virus-slash"></i>
+                    <h3>Malware Protection</h3>
+                    <p>AI-powered threat detection and response system that identifies, quarantines, and eliminates malware before it can cause damage.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Cloud Security</h3>
+                    <p>Comprehensive cloud infrastructure protection with automated security controls, encryption, and 24/7 monitoring of cloud assets.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Security</h3>
+                    <p>Enterprise-grade mobile device management with remote wipe capabilities, app security, and real-time threat monitoring.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Secure Development</h3>
+                    <p>Integration of security throughout the development lifecycle with code analysis, vulnerability scanning, and secure coding practices.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Vulnerability Assessment</h3>
+                    <p>Comprehensive security audits and penetration testing to identify, assess, and remediate potential security weaknesses.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Security Training</h3>
+                    <p>Interactive cybersecurity awareness programs customized for your organization to create a security-conscious workforce.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Compliance Management</h3>
+                    <p>Expert guidance and tools to achieve and maintain compliance with GDPR, HIPAA, PCI DSS, and other regulatory standards.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database Security</h3>
+                    <p>Advanced database encryption, access controls, and continuous monitoring to protect your mission-critical data assets.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-sync"></i>
+                    <h3>Disaster Recovery</h3>
+                    <p>Automated backup systems and comprehensive disaster recovery planning to ensure business continuity in any scenario.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Security Solutions</h3>
+                    <p>Advanced machine learning algorithms for predictive threat detection, behavioral analysis, and automated incident response.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>IoT Security</h3>
+                    <p>Specialized protection for Internet of Things devices with firmware security, network segmentation, and real-time monitoring.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Email Security</h3>
+                    <p>Advanced phishing protection, spam filtering, and email encryption with AI-powered threat intelligence and content analysis.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-sitemap"></i>
+                    <h3>Zero Trust Architecture</h3>
+                    <p>Implementation of zero trust security model with continuous verification, least privilege access, and microsegmentation.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Security Analytics</h3>
+                    <p>Advanced security information and event management (SIEM) with real-time analytics and automated threat correlation.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Endpoint Protection</h3>
+                    <p>Next-generation endpoint security with behavioral monitoring, application control, and automated incident response.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Application Security</h3>
+                    <p>Comprehensive protection against web-based threats including XSS, SQL injection, and CSRF with WAF implementation.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-fingerprint"></i>
+                    <h3>Digital Forensics</h3>
+                    <p>Professional incident investigation services with advanced digital forensics tools and expert analysis capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

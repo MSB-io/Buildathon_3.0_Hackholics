@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .section {
+            padding: 80px 0;
+            width: 100%;
+        }
+
+        .section-light {
+            background-color: #ffffff;
+        }
+
+        [data-theme='dark'] .section-light {
+            background-color: #000000;
+        }
+
+        .section-dark {
+            background-color: #f8f9fa;
+        }
+
+        [data-theme='dark'] .section-dark {
+            background-color: #111111;
+        }
+
+        .section-content {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .pricing-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        [data-theme='dark'] .pricing-header p {
+            color: #f8f9fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme='dark'] .price-card {
+            background: rgba(34, 34, 34, 0.95);
+            border-color: var(--border-color);
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .price-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--text-color);
+        }
+
+        .price-card .price span {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .price-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .price-card ul li {
+            margin: 15px 0;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .price-card ul li i {
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+
+        .price-card .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: auto;
+            margin-top: 20px;
+        }
+
+        .price-card .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ff3737;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px;
+            }
+
+            .price-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <script>
+        // Check for theme preference in local storage
+        const userTheme = localStorage.getItem('theme');
+        if (userTheme) {
+            document.body.setAttribute('data-theme', userTheme);
+        } else {
+            // Set default theme to dark
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    </script>
+
+    <a href="index.html" class="back-button">Back</a>
+
+    <div class="section section-light">
+        <div class="section-content">
+            <div class="pricing-header">
+                <h1>Pricing Plans</h1>
+                <p>Choose the perfect security package for your business needs</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-dark">
+        <div class="section-content">
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Small and Medium Business Services</h3>
+                    <div class="price">₹250,000<span>/year</span></div>
+                    <ul>
+                        <li>Comprehensive cybersecurity solutions</li>
+                        <li>Annual security assessments</li>
+                        <li>24/7 support</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Consulting Services</h3>
+                    <div class="price">₹50,000<span>/year</span></div>
+                    <ul>
+                        <li>Expert cybersecurity consulting</li>
+                        <li>Tailored security strategies</li>
+                        <li>Regular updates and reviews</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Cybersecurity Training</h3>
+                    <div class="price">₹400,000<span>/batch</span></div>
+                    <ul>
+                        <li>3-month training program</li>
+                        <li>Multiple batches available</li>
+                        <li>Hands-on training with industry experts</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

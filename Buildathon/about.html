@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #ffffff; /* Default light background */
+            color: #212529; /* Dark text for readability */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        [data-theme='dark'] {
+            background-color: #000000; /* Dark background for dark theme */
+            color: #f8f9fa; /* Light text for readability */
+        }
+
+        .section {
+            padding: 80px 0;
+            width: 100%;
+        }
+
+        .section-light {
+            background-color: #ffffff;
+        }
+
+        [data-theme='dark'] .section-light {
+            background-color: #000000;
+        }
+
+        .section-dark {
+            background-color: #f8f9fa;
+        }
+
+        [data-theme='dark'] .section-dark {
+            background-color: #111111;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-content {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .core-values-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .core-values {
+            display: flex;
+            justify-content: space-between; /* Align items horizontally */
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        .core-value {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px; /* Increased padding for better readability */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+            flex: 1 1 23%; /* Adjusted width for horizontal layout */
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+            color: #212529; /* Ensure text is dark for readability */
+            font-size: 1.1rem; /* Increase font size for better readability */
+        }
+
+        [data-theme='dark'] .core-value {
+            background: rgba(34, 34, 34, 0.95); /* Dark background for core values in dark theme */
+            color: #f8f9fa; /* Light text for readability in dark theme */
+        }
+
+        .core-value:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+        }
+
+        .core-value h3 {
+            margin-top: 0;
+        }
+
+        .mission-vision-section {
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mission-vision-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        [data-theme='dark'] .mission-vision-card {
+            background: rgba(34, 34, 34, 0.95);
+            color: #f8f9fa;
+        }
+
+        .mission-vision-item {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .history-section {
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .history-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        [data-theme='dark'] .history-card {
+            background: rgba(34, 34, 34, 0.95);
+            color: #f8f9fa;
+        }
+
+        .history-item {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .team-section {
+            margin-top: 40px;
+        }
+
+        .team-member {
+            display: inline-block;
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .member-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            padding: 8px 15px;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .back-button i {
+            font-size: 0.8rem;
+        }
+
+        .back-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <a href="index.html" class="back-button" style="background-color: #ff0000; padding: 8px 15px; font-size: 0.9rem; color: white; text-decoration: none; border-radius: 4px;">Back</a>
+    <div class="section section-light">
+        <div class="section-content">
+            <div class="about-header">
+                <h1>About Us</h1>
+                <p>Welcome to Allsafe Solutions, your trusted partner in cybersecurity.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-dark">
+        <div class="section-content">
+            <div class="core-values-section">
+                <h2>Our Core Values</h2>
+                <div class="core-values">
+                    <div class="core-value">
+                        <h3>Integrity</h3>
+                        <p>We uphold the highest standards of integrity in all our actions, ensuring transparency and trust in our client relationships.</p>
+                    </div>
+                    <div class="core-value">
+                        <h3>Innovation</h3>
+                        <p>We pursue innovation to deliver the best solutions to our clients, continuously adapting to the evolving cybersecurity landscape.</p>
+                    </div>
+                    <div class="core-value">
+                        <h3>Excellence</h3>
+                        <p>We strive for excellence in every aspect of our work, from customer service to technical execution.</p>
+                    </div>
+                    <div class="core-value">
+                        <h3>Collaboration</h3>
+                        <p>We believe in teamwork and collaboration to achieve our goals, fostering a culture of shared success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-light">
+        <div class="section-content">
+            <div class="mission-vision-section">
+                <h2>Mission and Vision</h2>
+                <div class="mission-vision-card">
+                    <h3>Mission</h3>
+                    <p>Our mission is to provide top-notch cybersecurity solutions that empower businesses to thrive in a digital world.</p>
+                    <h3>Vision</h3>
+                    <p>We envision a future where every organization can operate securely and confidently.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-dark">
+        <div class="section-content">
+            <div class="history-section">
+                <h2>Our History</h2>
+                <div class="history-card">
+                    <h3>Our Journey</h3>
+                    <p>Founded in 2020, Allsafe Solutions has grown from a small startup to a leading provider of cybersecurity services, helping businesses safeguard their digital assets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check for theme preference in local storage
+        const userTheme = localStorage.getItem('theme');
+        if (userTheme) {
+            document.body.setAttribute('data-theme', userTheme);
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    </script>
+</body>
+</html>

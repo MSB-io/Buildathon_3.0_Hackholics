@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .partners-section {
+            padding: 4rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partner-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            background: var(--bg-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .partner-name {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .partner-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .partner-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .partner-link:hover {
+            opacity: 0.9;
+        }
+
+        .partner-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .partner-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .partnership-types {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .type-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .type-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .type-title {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .type-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <a href="index.html" class="back-button">Back</a>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Our Partners</h1>
+            <p>Collaborating with industry leaders to deliver exceptional cybersecurity solutions</p>
+            <a href="#become-partner" class="cta-button">Become a Partner</a>
+        </div>
+    </header>
+
+    <section id="featured-partners" class="partners-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Partners</h2>
+                <p>Working together with leading organizations to enhance cybersecurity worldwide</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="partner-name">SecureNet Systems</h3>
+                    <p class="partner-description">Global leader in network security solutions, providing enterprise-grade protection for critical infrastructure.</p>
+                    <a href="#" class="partner-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="partner-name">CloudGuard Pro</h3>
+                    <p class="partner-description">Cloud security experts specializing in protecting cloud-based applications and data centers.</p>
+                    <a href="#" class="partner-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="partner-name">DataFort Security</h3>
+                    <p class="partner-description">Industry-leading data encryption and protection solutions for businesses of all sizes.</p>
+                    <a href="#" class="partner-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partnership-types">
+        <div class="container">
+            <div class="section-header">
+                <h2>Partnership Programs</h2>
+                <p>Discover the benefits of partnering with Allsafe Solutions</p>
+            </div>
+            
+            <div class="types-grid">
+                <div class="type-card">
+                    <i class="fas fa-handshake type-icon"></i>
+                    <h3 class="type-title">Technology Partners</h3>
+                    <p class="type-description">Integrate your solutions with our platform to create comprehensive security offerings</p>
+                </div>
+
+                <div class="type-card">
+                    <i class="fas fa-store type-icon"></i>
+                    <h3 class="type-title">Reseller Partners</h3>
+                    <p class="type-description">Join our network of authorized resellers and grow your business with us</p>
+                </div>
+
+                <div class="type-card">
+                    <i class="fas fa-users type-icon"></i>
+                    <h3 class="type-title">Strategic Partners</h3>
+                    <p class="type-description">Collaborate on joint solutions and market opportunities</p>
+                </div>
+
+                <div class="type-card">
+                    <i class="fas fa-graduation-cap type-icon"></i>
+                    <h3 class="type-title">Training Partners</h3>
+                    <p class="type-description">Deliver certified training programs and build security expertise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme handling
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.dataset.theme = savedTheme;
+        updateThemeIcon(savedTheme);
+        
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.dataset.theme;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.dataset.theme = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .help-section {
+            padding: 4rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .help-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .help-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .help-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .help-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .help-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .help-link:hover {
+            opacity: 0.9;
+        }
+
+        .help-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .help-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .faq-section {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .faq-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .search-section {
+            padding: 2rem 0;
+            background: var(--bg-color);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .search-button {
+            padding: 1rem 2rem;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-button:hover {
+            opacity: 0.9;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background-color: #ff3737;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .help-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header class="hero">
+        <div class="container">
+            <h1>Help Center</h1>
+            <p>Find answers to your questions and get the support you need</p>
+            <a href="#contact-support" class="cta-button">Contact Support</a>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search for help articles...">
+                <button class="search-button">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Topics</h2>
+                <p>Quick access to our most frequently accessed help resources</p>
+            </div>
+            
+            <div class="help-grid">
+                <div class="help-card">
+                    <i class="fas fa-shield-alt help-icon"></i>
+                    <h3 class="help-title">Getting Started</h3>
+                    <p class="help-description">Learn the basics of setting up and configuring your cybersecurity solutions.</p>
+                    <a href="#" class="help-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="help-card">
+                    <i class="fas fa-lock help-icon"></i>
+                    <h3 class="help-title">Security Settings</h3>
+                    <p class="help-description">Configure your security settings for optimal protection and performance.</p>
+                    <a href="#" class="help-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="help-card">
+                    <i class="fas fa-user-shield help-icon"></i>
+                    <h3 class="help-title">Account Management</h3>
+                    <p class="help-description">Manage your account settings, permissions, and user access controls.</p>
+                    <a href="#" class="help-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <a href="index.html" class="back-button" style="background-color: #ff3737; padding: 10px 20px; font-size: 16px; color: white; text-decoration: none; border-radius: 5px;">Back</a>
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about our services</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h3 class="faq-question">How do I reset my password?</h3>
+                    <p class="faq-answer">Click on the "Forgot Password" link on the login page and follow the instructions sent to your registered email.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3 class="faq-question">How can I upgrade my plan?</h3>
+                    <p class="faq-answer">Visit the pricing page and select your desired plan. Follow the upgrade process to enhance your security features.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3 class="faq-question">Is my data secure?</h3>
+                    <p class="faq-answer">Yes, we use industry-standard encryption and security measures to protect your data at all times.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3 class="faq-question">How do I contact support?</h3>
+                    <p class="faq-answer">You can reach our support team through email, phone, or by submitting a ticket through your dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme handling
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.dataset.theme = savedTheme;
+        updateThemeIcon(savedTheme);
+        
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.dataset.theme;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.dataset.theme = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .section {
+            padding: 80px 0;
+            width: 100%;
+        }
+
+        .section-light {
+            background-color: #ffffff;
+        }
+
+        [data-theme='dark'] .section-light {
+            background-color: #000000;
+        }
+
+        .section-dark {
+            background-color: #f8f9fa;
+        }
+
+        [data-theme='dark'] .section-dark {
+            background-color: #111111;
+        }
+
+        .section-content {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .back-button i {
+            font-size: 0.8rem;
+        }
+
+        .back-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            transition: all 0.3s ease;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .blog-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        [data-theme='dark'] .blog-header p {
+            color: #f8f9fa;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme='dark'] .blog-card {
+            background: rgba(34, 34, 34, 0.95);
+            border-color: var(--border-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-image {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .blog-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            opacity: 0.9;
+            transform: translateX(5px);
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px;
+            }
+            
+            .blog-content {
+                padding: 20px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            /* Center alignment styles */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--card-bg);
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+            /* Remove margin and use transform for perfect centering */
+            margin: 0;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+            color: var(--text-color);
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            padding-left: 30px;
+        }
+
+        .modal-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+
+        .modal-text {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            padding: 0 30px;
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 30px;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 0;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <script>
+        // Check for theme preference in local storage
+        const userTheme = localStorage.getItem('theme');
+        if (userTheme) {
+            document.body.setAttribute('data-theme', userTheme);
+        } else {
+            // Set default theme to dark
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    </script>
+
+    <script>
+        // Initialize theme from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+    </script>
+
+    <a href="index.html" class="back-button" style="background-color: #ff3737; padding: 10px 20px; font-size: 16px; color: white; text-decoration: none; border-radius: 5px;">Back</a>
+
+    <div class="section section-light">
+        <div class="section-content">
+            <div class="blog-header">
+                <h1>Latest Blog Posts</h1>
+                <p>Stay informed about the latest cybersecurity trends, threats, and best practices</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-dark">
+        <div class="section-content">
+            <div class="blog-grid">
+                <article class="blog-card" data-blog-id="ai-cybersecurity">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=AI+in+Cybersecurity" alt="AI in Cybersecurity" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 15, 2024</div>
+                        <h3 class="blog-title">The Rise of AI in Cybersecurity: Opportunities and Threats</h3>
+                        <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing cybersecurity, from automated threat detection to AI-powered attacks.</p>
+                        <div class="blog-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="zero-trust">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Zero+Trust" alt="Zero Trust Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 12, 2024</div>
+                        <h3 class="blog-title">Zero Trust Architecture: The Future of Enterprise Security</h3>
+                        <p class="blog-excerpt">Learn why organizations are adopting zero trust security models and how to implement this approach effectively.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Zero Trust</span>
+                            <span class="tag">Enterprise</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="cloud-security">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Cloud+Security" alt="Cloud Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 10, 2024</div>
+                        <h3 class="blog-title">Securing Your Cloud Infrastructure: Best Practices</h3>
+                        <p class="blog-excerpt">Discover essential strategies for protecting your cloud-based assets and ensuring data security in the cloud.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Infrastructure</span>
+                            <span class="tag">Best Practices</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="ransomware">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Ransomware" alt="Ransomware Defense" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 8, 2024</div>
+                        <h3 class="blog-title">Advanced Ransomware Defense Strategies</h3>
+                        <p class="blog-excerpt">Stay protected against evolving ransomware threats with our comprehensive defense strategies and best practices.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Ransomware</span>
+                            <span class="tag">Defense</span>
+                            <span class="tag">Protection</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="iot-security">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=IoT+Security" alt="IoT Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 5, 2024</div>
+                        <h3 class="blog-title">IoT Security Challenges and Solutions</h3>
+                        <p class="blog-excerpt">Explore the unique security challenges posed by IoT devices and learn effective strategies for securing your IoT ecosystem.</p>
+                        <div class="blog-tags">
+                            <span class="tag">IoT</span>
+                            <span class="tag">Connected Devices</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="incident-response">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Incident+Response" alt="Incident Response" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 3, 2024</div>
+                        <h3 class="blog-title">Building an Effective Incident Response Plan</h3>
+                        <p class="blog-excerpt">Learn how to create and implement a robust incident response plan to handle security breaches effectively.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Incident Response</span>
+                            <span class="tag">Planning</span>
+                            <span class="tag">Crisis Management</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="compliance">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Compliance" alt="Compliance" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">March 1, 2024</div>
+                        <h3 class="blog-title">Navigating Cybersecurity Compliance Requirements</h3>
+                        <p class="blog-excerpt">A comprehensive guide to understanding and implementing cybersecurity compliance requirements for your organization.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Compliance</span>
+                            <span class="tag">Regulations</span>
+                            <span class="tag">Standards</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="social-engineering">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Social+Engineering" alt="Social Engineering" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 28, 2024</div>
+                        <h3 class="blog-title">Defending Against Social Engineering Attacks</h3>
+                        <p class="blog-excerpt">Understanding and preventing social engineering attacks through employee training and awareness programs.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Social Engineering</span>
+                            <span class="tag">Training</span>
+                            <span class="tag">Awareness</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="supply-chain">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Supply+Chain" alt="Supply Chain Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 25, 2024</div>
+                        <h3 class="blog-title">Supply Chain Security: Protecting Your Digital Assets</h3>
+                        <p class="blog-excerpt">Learn how to secure your supply chain against cyber threats and prevent third-party security breaches.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Supply Chain</span>
+                            <span class="tag">Third Party</span>
+                            <span class="tag">Risk Management</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="quantum">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Quantum+Computing" alt="Quantum Computing" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 22, 2024</div>
+                        <h3 class="blog-title">Quantum Computing: The Next Cybersecurity Challenge</h3>
+                        <p class="blog-excerpt">Explore how quantum computing will impact current encryption methods and what organizations can do to prepare.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Quantum</span>
+                            <span class="tag">Encryption</span>
+                            <span class="tag">Future Tech</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="mobile">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Mobile+Security" alt="Mobile Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 20, 2024</div>
+                        <h3 class="blog-title">Mobile Device Security in the Enterprise</h3>
+                        <p class="blog-excerpt">Best practices for securing mobile devices in corporate environments and protecting sensitive data on the go.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">BYOD</span>
+                            <span class="tag">Enterprise</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="devsecops">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=DevSecOps" alt="DevSecOps" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 18, 2024</div>
+                        <h3 class="blog-title">Implementing DevSecOps: Security as Code</h3>
+                        <p class="blog-excerpt">How to integrate security into your DevOps pipeline and automate security testing throughout the development lifecycle.</p>
+                        <div class="blog-tags">
+                            <span class="tag">DevSecOps</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">CI/CD</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="blockchain">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Blockchain" alt="Blockchain Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 15, 2024</div>
+                        <h3 class="blog-title">Blockchain Security: Beyond Cryptocurrency</h3>
+                        <p class="blog-excerpt">Understanding blockchain security implications for enterprise applications and smart contract vulnerabilities.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Smart Contracts</span>
+                            <span class="tag">DLT</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="api">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=API+Security" alt="API Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 12, 2024</div>
+                        <h3 class="blog-title">Securing APIs in Modern Applications</h3>
+                        <p class="blog-excerpt">Essential strategies for protecting APIs against common attacks and ensuring secure data transmission.</p>
+                        <div class="blog-tags">
+                            <span class="tag">API</span>
+                            <span class="tag">Web Security</span>
+                            <span class="tag">Authentication</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="5g">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=5G+Security" alt="5G Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 10, 2024</div>
+                        <h3 class="blog-title">5G Security: Opportunities and Challenges</h3>
+                        <p class="blog-excerpt">Exploring the security implications of 5G networks and how organizations can prepare for the next generation of connectivity.</p>
+                        <div class="blog-tags">
+                            <span class="tag">5G</span>
+                            <span class="tag">Network Security</span>
+                            <span class="tag">Infrastructure</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-blog-id="container">
+                    <img src="https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Container+Security" alt="Container Security" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">February 8, 2024</div>
+                        <h3 class="blog-title">Container Security Best Practices</h3>
+                        <p class="blog-excerpt">Comprehensive guide to securing containerized applications and maintaining security in Kubernetes environments.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Containers</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Add this before closing body tag -->
+<div id="blogModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img class="modal-image" src="" alt="Blog Image">
+        <h2 class="modal-title"></h2>
+        <div class="modal-date"></div>
+        <div class="modal-tags"></div>
+        <div class="modal-text"></div>
+    </div>
+</div>
+
+<script>
+    // Theme initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Modal functionality
+        const modal = document.getElementById('blogModal');
+        const modalClose = document.querySelector('.modal-close');
+        const readMoreButtons = document.querySelectorAll('.read-more');
+
+        // Blog content data
+        const blogContent = {
+            'ai-cybersecurity': {
+                title: 'The Rise of AI in Cybersecurity: Opportunities and Threats',
+                date: 'March 15, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=AI+in+Cybersecurity',
+                content: `Artificial Intelligence is revolutionizing the cybersecurity landscape, bringing both unprecedented opportunities and new challenges. This comprehensive analysis explores how AI is transforming threat detection, response mechanisms, and overall security posture.
+
+                Key Areas of Impact:
+                • Automated Threat Detection
+                • Predictive Security Analytics
+                • Behavioral Analysis
+                • Real-time Response Systems`,
+                tags: ['AI', 'Machine Learning', 'Innovation']
+            },
+            'zero-trust': {
+                title: 'Zero Trust Architecture: The Future of Enterprise Security',
+                date: 'March 12, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Zero+Trust',
+                content: `Zero Trust Architecture (ZTA) represents a paradigm shift in security thinking, moving away from traditional perimeter-based security to a model where trust is never assumed and must be continuously verified.
+
+                Key Components:
+                • Identity Verification
+                • Micro-segmentation
+                • Least Privilege Access
+                • Continuous Monitoring`,
+                tags: ['Zero Trust', 'Enterprise', 'Security']
+            },
+            'cloud-security': {
+                title: 'Cloud Security Best Practices for 2024',
+                date: 'March 10, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Cloud+Security',
+                content: `As organizations continue to migrate to the cloud, security considerations become increasingly critical. This article explores the latest best practices and emerging threats in cloud security.
+
+                Focus Areas:
+                • Data Encryption
+                • Access Management
+                • Compliance Requirements
+                • Multi-Cloud Security`,
+                tags: ['Cloud', 'Data Protection', 'Compliance']
+            },
+            'ransomware': {
+                title: 'Advanced Ransomware Defense Strategies',
+                date: 'March 8, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Ransomware',
+                content: `Ransomware attacks continue to evolve in sophistication. Learn about the latest defense strategies and recovery methods to protect your organization.
+
+                Key Strategies:
+                • Backup Solutions
+                • Employee Training
+                • Incident Response
+                • Recovery Planning`,
+                tags: ['Ransomware', 'Defense', 'Recovery']
+            },
+            'iot-security': {
+                title: 'IoT Security Challenges and Solutions',
+                date: 'March 5, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=IoT+Security',
+                content: `The proliferation of IoT devices brings new security challenges. Discover how to secure your IoT ecosystem and protect against emerging threats.
+
+                Key Aspects:
+                • Device Authentication
+                • Network Segmentation
+                • Firmware Security
+                • Data Privacy`,
+                tags: ['IoT', 'Device Security', 'Privacy']
+            },
+            'incident-response': {
+                title: 'Building an Effective Incident Response Plan',
+                date: 'March 3, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Incident+Response',
+                content: `A well-designed incident response plan is crucial for minimizing damage from cyber attacks. Learn how to create and maintain an effective response strategy.
+
+                Essential Elements:
+                • Team Roles
+                • Communication Plans
+                • Recovery Procedures
+                • Documentation`,
+                tags: ['Incident Response', 'Planning', 'Recovery']
+            },
+            'compliance': {
+                title: 'Navigating Cybersecurity Compliance Requirements',
+                date: 'March 1, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Compliance',
+                content: `Stay compliant with evolving cybersecurity regulations. This guide covers key compliance frameworks and implementation strategies.
+
+                Key Frameworks:
+                • GDPR
+                • HIPAA
+                • PCI DSS
+                • SOC 2`,
+                tags: ['Compliance', 'Regulations', 'Standards']
+            },
+            'social-engineering': {
+                title: 'Defending Against Social Engineering Attacks',
+                date: 'February 28, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Social+Engineering',
+                content: `Social engineering remains a primary attack vector. Learn about the latest techniques and how to protect your organization.
+
+                Protection Strategies:
+                • Employee Training
+                • Authentication Methods
+                • Policy Development
+                • Awareness Programs`,
+                tags: ['Social Engineering', 'Training', 'Awareness']
+            },
+            'supply-chain': {
+                title: 'Supply Chain Security: Protecting Your Digital Assets',
+                date: 'February 25, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Supply+Chain',
+                content: `Supply chain attacks are becoming more sophisticated. Learn how to secure your supply chain and protect against third-party risks.
+
+                Key Areas:
+                • Vendor Assessment
+                • Risk Management
+                • Continuous Monitoring
+                • Incident Response`,
+                tags: ['Supply Chain', 'Risk Management', 'Vendors']
+            },
+            'quantum': {
+                title: 'Quantum Computing: Preparing for Post-Quantum Cryptography',
+                date: 'February 22, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Quantum+Computing',
+                content: `Quantum computing poses new challenges to current encryption methods. Learn how to prepare for the post-quantum era.
+
+                Focus Areas:
+                • Quantum-Safe Algorithms
+                • Migration Strategies
+                • Risk Assessment
+                • Implementation Planning`,
+                tags: ['Quantum', 'Cryptography', 'Future Tech']
+            },
+            'mobile': {
+                title: 'Enterprise Mobile Security Best Practices',
+                date: 'February 20, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Mobile+Security',
+                content: `Mobile devices present unique security challenges in the enterprise. Discover best practices for securing mobile endpoints.
+
+                Key Aspects:
+                • MDM Solutions
+                • App Security
+                • Data Protection
+                • BYOD Policies`,
+                tags: ['Mobile', 'Enterprise', 'BYOD']
+            },
+            'devsecops': {
+                title: 'Implementing DevSecOps: Security as Code',
+                date: 'February 18, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=DevSecOps',
+                content: `DevSecOps integration is crucial for modern application security. Learn how to implement security throughout the development lifecycle.
+
+                Implementation Steps:
+                • Security Testing
+                • CI/CD Integration
+                • Automated Scanning
+                • Compliance Checks`,
+                tags: ['DevSecOps', 'Development', 'Automation']
+            },
+            'blockchain': {
+                title: 'Blockchain Security: Beyond Cryptocurrency',
+                date: 'February 15, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Blockchain',
+                content: `Blockchain technology offers new security possibilities and challenges. Explore security considerations for enterprise blockchain implementations.
+
+                Key Topics:
+                • Smart Contracts
+                • Network Security
+                • Access Control
+                • Privacy Solutions`,
+                tags: ['Blockchain', 'Smart Contracts', 'DLT']
+            },
+            'api': {
+                title: 'Securing APIs in Modern Applications',
+                date: 'February 12, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=API+Security',
+                content: `APIs are critical for modern applications. Learn about best practices for API security and common vulnerabilities.
+
+                Security Measures:
+                • Authentication
+                • Rate Limiting
+                • Input Validation
+                • Encryption`,
+                tags: ['API', 'Web Security', 'Development']
+            },
+            '5g': {
+                title: '5G Security: Opportunities and Challenges',
+                date: 'February 10, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=5G+Security',
+                content: `5G networks bring new security challenges and opportunities. Explore the security implications of 5G technology.
+
+                Key Areas:
+                • Network Slicing
+                • Edge Computing
+                • IoT Integration
+                • Privacy Concerns`,
+                tags: ['5G', 'Network Security', 'Innovation']
+            },
+            'container': {
+                title: 'Container Security Best Practices',
+                date: 'February 8, 2024',
+                image: 'https://via.placeholder.com/800x400/2a2a2a/ffffff?text=Container+Security',
+                content: `Container security is essential for modern applications. Learn best practices for securing containerized environments.
+
+                Focus Areas:
+                • Image Security
+                • Runtime Protection
+                • Orchestration Security
+                • Compliance`,
+                tags: ['Containers', 'Docker', 'Kubernetes']
+            }
+        };
+
+        // Open modal with content
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const article = this.closest('article');
+                const blogId = article.dataset.blogId || 'ai-cybersecurity'; // Default to first blog if no ID
+
+                const content = blogContent[blogId];
+                if (content) {
+                    modal.querySelector('.modal-image').src = content.image;
+                    modal.querySelector('.modal-title').textContent = content.title;
+                    modal.querySelector('.modal-date').textContent = content.date;
+                    modal.querySelector('.modal-text').innerHTML = content.content;
+                    
+                    // Clear and rebuild tags
+                    const tagsContainer = modal.querySelector('.modal-tags');
+                    tagsContainer.innerHTML = '';
+                    content.tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'tag';
+                        span.textContent = tag;
+                        tagsContainer.appendChild(span);
+                    });
+                }
+
+                // Update display style to use flexbox
+                modal.style.display = 'flex';
+                document.body.classList.add('modal-open');
+            });
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
+    });
+</script>
+</body>
+</html>

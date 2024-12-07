@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .section {
+            padding: 4rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 60px 0 20px;
+            color: var(--text-color);
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover .resource-icon {
+            transform: scale(1.1);
+        }
+
+        .resource-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .resource-description {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--accent-color);
+        }
+
+        .resource-link i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .resource-tag {
+            background: var(--border-color);
+            color: var(--text-color);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .resource-card:hover .resource-tag {
+            background: var(--secondary-color);
+            color: var(--bg-color);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background: #8b0a0a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #8b0a0a;
+            transition: all 0.3s ease;
+            z-index: 100;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background: #8b0a0a;
+            border-color: #8b0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <a href="index.html" class="back-button">Back</a>
+    <div class="section">
+        <div class="section-content">
+            <h1>Cybersecurity Resources</h1>
+            <p class="section-description">Access our comprehensive collection of cybersecurity resources, tools, and educational materials to enhance your security knowledge and capabilities.</p>
+            
+            <div class="resources-grid">
+                <!-- Tools & Software -->
+                <div class="resource-card">
+                    <i class="fas fa-tools resource-icon"></i>
+                    <h3 class="resource-title">Security Tools Suite</h3>
+                    <p class="resource-description">Essential cybersecurity tools for vulnerability assessment, penetration testing, and security monitoring.</p>
+                    <a href="#" class="resource-link">Access Tools <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Tools</span>
+                        <span class="resource-tag">Testing</span>
+                        <span class="resource-tag">Monitoring</span>
+                    </div>
+                </div>
+
+                <!-- Whitepapers -->
+                <div class="resource-card">
+                    <i class="fas fa-file-alt resource-icon"></i>
+                    <h3 class="resource-title">Security Whitepapers</h3>
+                    <p class="resource-description">In-depth research papers and analysis on emerging cybersecurity threats and solutions.</p>
+                    <a href="#" class="resource-link">Read Papers <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Research</span>
+                        <span class="resource-tag">Analysis</span>
+                        <span class="resource-tag">Insights</span>
+                    </div>
+                </div>
+
+                <!-- Training Materials -->
+                <div class="resource-card">
+                    <i class="fas fa-graduation-cap resource-icon"></i>
+                    <h3 class="resource-title">Training Resources</h3>
+                    <p class="resource-description">Comprehensive training materials and courses for cybersecurity professionals and beginners.</p>
+                    <a href="#" class="resource-link">Start Learning <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Training</span>
+                        <span class="resource-tag">Education</span>
+                        <span class="resource-tag">Courses</span>
+                    </div>
+                </div>
+
+                <!-- Best Practices -->
+                <div class="resource-card">
+                    <i class="fas fa-shield-alt resource-icon"></i>
+                    <h3 class="resource-title">Security Best Practices</h3>
+                    <p class="resource-description">Guidelines and recommendations for implementing robust security measures in your organization.</p>
+                    <a href="#" class="resource-link">View Guidelines <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Guidelines</span>
+                        <span class="resource-tag">Standards</span>
+                        <span class="resource-tag">Practices</span>
+                    </div>
+                </div>
+
+                <!-- Incident Response -->
+                <div class="resource-card">
+                    <i class="fas fa-exclamation-triangle resource-icon"></i>
+                    <h3 class="resource-title">Incident Response Kit</h3>
+                    <p class="resource-description">Templates and procedures for effective incident response and recovery planning.</p>
+                    <a href="#" class="resource-link">Get Templates <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Response</span>
+                        <span class="resource-tag">Planning</span>
+                        <span class="resource-tag">Recovery</span>
+                    </div>
+                </div>
+
+                <!-- Compliance Guides -->
+                <div class="resource-card">
+                    <i class="fas fa-check-circle resource-icon"></i>
+                    <h3 class="resource-title">Compliance Guides</h3>
+                    <p class="resource-description">Comprehensive guides for meeting various security compliance requirements and standards.</p>
+                    <a href="#" class="resource-link">View Guides <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Compliance</span>
+                        <span class="resource-tag">Regulations</span>
+                        <span class="resource-tag">Standards</span>
+                    </div>
+                </div>
+
+                <!-- Security Assessment -->
+                <div class="resource-card">
+                    <i class="fas fa-clipboard-check resource-icon"></i>
+                    <h3 class="resource-title">Assessment Tools</h3>
+                    <p class="resource-description">Self-assessment tools and checklists to evaluate your organization's security posture.</p>
+                    <a href="#" class="resource-link">Start Assessment <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Assessment</span>
+                        <span class="resource-tag">Evaluation</span>
+                        <span class="resource-tag">Security</span>
+                    </div>
+                </div>
+
+                <!-- Threat Intelligence -->
+                <div class="resource-card">
+                    <i class="fas fa-satellite-dish resource-icon"></i>
+                    <h3 class="resource-title">Threat Intelligence Feed</h3>
+                    <p class="resource-description">Real-time threat intelligence feeds and reports to stay ahead of emerging cyber threats and vulnerabilities.</p>
+                    <a href="#" class="resource-link">Access Feed <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Intelligence</span>
+                        <span class="resource-tag">Threats</span>
+                        <span class="resource-tag">Real-time</span>
+                    </div>
+                </div>
+
+                <!-- Security Architecture -->
+                <div class="resource-card">
+                    <i class="fas fa-network-wired resource-icon"></i>
+                    <h3 class="resource-title">Security Architecture Guides</h3>
+                    <p class="resource-description">Best practices and reference architectures for building secure IT infrastructure and systems.</p>
+                    <a href="#" class="resource-link">View Guides <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Architecture</span>
+                        <span class="resource-tag">Infrastructure</span>
+                        <span class="resource-tag">Design</span>
+                    </div>
+                </div>
+
+                <!-- Encryption Tools -->
+                <div class="resource-card">
+                    <i class="fas fa-key resource-icon"></i>
+                    <h3 class="resource-title">Encryption Resources</h3>
+                    <p class="resource-description">Tools and guides for implementing strong encryption practices and managing cryptographic keys.</p>
+                    <a href="#" class="resource-link">Access Tools <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Encryption</span>
+                        <span class="resource-tag">Cryptography</span>
+                        <span class="resource-tag">Keys</span>
+                    </div>
+                </div>
+
+                <!-- Cloud Security -->
+                <div class="resource-card">
+                    <i class="fas fa-cloud resource-icon"></i>
+                    <h3 class="resource-title">Cloud Security Toolkit</h3>
+                    <p class="resource-description">Essential tools and guidelines for securing cloud infrastructure and applications across major platforms.</p>
+                    <a href="#" class="resource-link">Get Toolkit <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Cloud</span>
+                        <span class="resource-tag">Infrastructure</span>
+                        <span class="resource-tag">Security</span>
+                    </div>
+                </div>
+
+                <!-- IoT Security -->
+                <div class="resource-card">
+                    <i class="fas fa-microchip resource-icon"></i>
+                    <h3 class="resource-title">IoT Security Framework</h3>
+                    <p class="resource-description">Comprehensive framework for securing IoT devices and networks in enterprise environments.</p>
+                    <a href="#" class="resource-link">View Framework <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">IoT</span>
+                        <span class="resource-tag">Devices</span>
+                        <span class="resource-tag">Networks</span>
+                    </div>
+                </div>
+
+                <!-- Forensics Tools -->
+                <div class="resource-card">
+                    <i class="fas fa-search resource-icon"></i>
+                    <h3 class="resource-title">Digital Forensics Kit</h3>
+                    <p class="resource-description">Professional tools and procedures for digital forensics investigation and incident analysis.</p>
+                    <a href="#" class="resource-link">Access Kit <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Forensics</span>
+                        <span class="resource-tag">Investigation</span>
+                        <span class="resource-tag">Analysis</span>
+                    </div>
+                </div>
+
+                <!-- API Security -->
+                <div class="resource-card">
+                    <i class="fas fa-code resource-icon"></i>
+                    <h3 class="resource-title">API Security Resources</h3>
+                    <p class="resource-description">Guidelines and tools for implementing secure API endpoints and maintaining API security.</p>
+                    <a href="#" class="resource-link">View Resources <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">API</span>
+                        <span class="resource-tag">Integration</span>
+                        <span class="resource-tag">Security</span>
+                    </div>
+                </div>
+
+                <!-- Security News -->
+                <div class="resource-card">
+                    <i class="fas fa-newspaper resource-icon"></i>
+                    <h3 class="resource-title">Security Updates</h3>
+                    <p class="resource-description">Latest news, updates, and alerts about emerging cybersecurity threats and vulnerabilities.</p>
+                    <a href="#" class="resource-link">Read Updates <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">News</span>
+                        <span class="resource-tag">Updates</span>
+                        <span class="resource-tag">Alerts</span>
+                    </div>
+                </div>
+
+                <!-- Community Forums -->
+                <div class="resource-card">
+                    <i class="fas fa-users resource-icon"></i>
+                    <h3 class="resource-title">Community Hub</h3>
+                    <p class="resource-description">Join our cybersecurity community to discuss challenges, share solutions, and network with peers.</p>
+                    <a href="#" class="resource-link">Join Community <i class="fas fa-arrow-right"></i></a>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Community</span>
+                        <span class="resource-tag">Discussion</span>
+                        <span class="resource-tag">Network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme handling
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.dataset.theme = savedTheme;
+    </script>
+</body>
+</html>

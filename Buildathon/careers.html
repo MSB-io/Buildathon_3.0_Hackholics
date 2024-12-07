@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .careers-section {
+            padding: 4rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .career-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .career-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .career-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .career-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .career-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .career-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .career-link:hover {
+            opacity: 0.9;
+        }
+
+        .career-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .career-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .benefits-section {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .benefit-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff3737;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .careers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <a href="index.html" class="back-button">Back</a>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Join Our Mission</h1>
+            <p>Be part of a team that's shaping the future of cybersecurity</p>
+            <a href="#open-positions" class="cta-button">View Open Positions</a>
+        </div>
+    </header>
+
+    <section id="open-positions" class="careers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Open Positions</h2>
+                <p>Explore exciting opportunities to grow your career with us</p>
+            </div>
+            
+            <div class="careers-grid">
+                <div class="career-card">
+                    <i class="fas fa-shield-alt career-icon"></i>
+                    <h3 class="career-title">Security Engineer</h3>
+                    <div class="career-details">
+                        <span class="career-detail"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span class="career-detail"><i class="fas fa-clock"></i> Full-time</span>
+                        <span class="career-detail"><i class="fas fa-briefcase"></i> 3-5 years</span>
+                    </div>
+                    <p class="career-description">Design and implement security measures to protect our clients' digital assets. Work with cutting-edge technologies and tackle complex security challenges.</p>
+                    <a href="#" class="career-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="career-card">
+                    <i class="fas fa-code career-icon"></i>
+                    <h3 class="career-title">Security Developer</h3>
+                    <div class="career-details">
+                        <span class="career-detail"><i class="fas fa-map-marker-alt"></i> Hybrid</span>
+                        <span class="career-detail"><i class="fas fa-clock"></i> Full-time</span>
+                        <span class="career-detail"><i class="fas fa-briefcase"></i> 2-4 years</span>
+                    </div>
+                    <p class="career-description">Develop secure applications and implement security features. Work on innovative solutions to protect against cyber threats.</p>
+                    <a href="#" class="career-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="career-card">
+                    <i class="fas fa-user-shield career-icon"></i>
+                    <h3 class="career-title">Security Analyst</h3>
+                    <div class="career-details">
+                        <span class="career-detail"><i class="fas fa-map-marker-alt"></i> On-site</span>
+                        <span class="career-detail"><i class="fas fa-clock"></i> Full-time</span>
+                        <span class="career-detail"><i class="fas fa-briefcase"></i> 1-3 years</span>
+                    </div>
+                    <p class="career-description">Monitor and analyze security systems. Investigate security breaches and implement preventive measures.</p>
+                    <a href="#" class="career-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Join Us?</h2>
+                <p>Discover the benefits of being part of the Allsafe team</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line benefit-icon"></i>
+                    <h3 class="benefit-title">Career Growth</h3>
+                    <p class="benefit-description">Continuous learning and development opportunities to advance your career</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-laptop-house benefit-icon"></i>
+                    <h3 class="benefit-title">Flexible Work</h3>
+                    <p class="benefit-description">Remote and hybrid work options to maintain work-life balance</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-hand-holding-heart benefit-icon"></i>
+                    <h3 class="benefit-title">Great Benefits</h3>
+                    <p class="benefit-description">Comprehensive health coverage and competitive compensation package</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-users benefit-icon"></i>
+                    <h3 class="benefit-title">Amazing Team</h3>
+                    <p class="benefit-description">Work with talented professionals in a collaborative environment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme handling
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.dataset.theme = savedTheme;
+        updateThemeIcon(savedTheme);
+        
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.dataset.theme;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.dataset.theme = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
+</body>
+</html>

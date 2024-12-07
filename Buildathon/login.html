@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Allsafe Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #212529;
+            --button-background: #ff3333;
+            --button-text: #ffffff;
+        }
+
+        [data-theme='dark'] {
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --button-background: #ff3333;
+            --button-text: #ffffff;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff; /* White background for the light theme */
+            color: #212529; /* Dark text for readability */
+        }
+
+        .login-container {
+            background: #ffffff; /* Light background for the card in light theme */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            width: 350px; /* Increased width */
+            color: #212529; /* Dark text for readability */
+            text-align: center;
+            border: 1px solid #ced4da; /* Subtle border for definition */
+        }
+
+        [data-theme='dark'] {
+            background-color: #000000; /* Dark background for dark theme */
+            color: #f8f9fa; /* Light text for readability */
+        }
+
+        [data-theme='dark'] .login-container {
+            background: rgba(34, 34, 34, 0.95); /* Dark background for card in dark theme */
+            color: #f8f9fa; /* Light text for readability */
+            border: none; /* Remove border in dark mode */
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2); /* Red shadow for depth */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        [data-theme='dark'] input {
+            border: none;
+            background-color: #343a40; /* Dark background for input fields */
+            color: #f8f9fa; /* Light text for input fields */
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--button-background); /* Red accent color for buttons */
+            color: var(--button-text); /* White text for buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .theme-toggle li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .theme-toggle button {
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-size: 24px;
+        }
+
+        .theme-toggle button i {
+            color: var(--text-color);
+        }
+
+        [data-theme='dark'] .theme-toggle button i {
+            color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle">
+        <ul>
+            <li>
+                <button id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="authForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="submit-button">Login</button>
+        </form>
+        <div class="toggle-link">
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </div>
+    </div>
+    <script>
+        // Check for theme preference in local storage
+        const userTheme = localStorage.getItem('theme');
+        if (userTheme) {
+            document.body.setAttribute('data-theme', userTheme);
+        } else {
+            // Set default theme to dark
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        const authForm = document.getElementById('authForm');
+
+        authForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if user is already logged in
+            if (localStorage.getItem('user')) {
+                window.location.href = 'index.html'; // Redirect to home page
+                return;
+            }
+
+            // Simple authentication simulation
+            if (username && password) {
+                localStorage.setItem('user', JSON.stringify({ username }));
+                window.location.href = 'index.html'; // Redirect to home page
+            }
+        });
+    </script>
+</body>
+</html>
